@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/chaniadb?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">chania</property>
+    <property name="hibernate.connection.password">chania</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <mapping resource="chania/model/FacturaDetalle.hbm.xml"/>
+    <mapping resource="chania/model/Usuario.hbm.xml"/>
+    <mapping resource="chania/model/Pago.hbm.xml"/>
+    <mapping resource="chania/model/Evento.hbm.xml"/>
+    <mapping resource="chania/model/Articulo.hbm.xml"/>
+    <mapping resource="chania/model/PaqueteDetalle.hbm.xml"/>
+    <mapping resource="chania/model/Salon.hbm.xml"/>
+    <mapping resource="chania/model/Paquete.hbm.xml"/>
+    <mapping resource="chania/model/Factura.hbm.xml"/>
+    <mapping resource="chania/model/Cliente.hbm.xml"/>
+    <mapping resource="chania/model/Solicitud.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
