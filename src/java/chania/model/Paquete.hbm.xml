@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/11/2017 11:31:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="chania.model.Paquete" table="paquete" catalog="chaniadb" optimistic-lock="version">
+        <id name="idpaquete" type="java.lang.Integer">
+            <column name="idpaquete" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="80" />
+        </property>
+        <property name="precio" type="java.lang.Integer">
+            <column name="precio" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" />
+        </property>
+        <property name="salonClaveRef" type="string">
+            <column name="salon_clave_ref" length="45" />
+        </property>
+        <property name="estatus" type="string">
+            <column name="estatus" length="45" />
+        </property>
+        <set name="paqueteDetalles" table="paquete_detalle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="paquete_idpaquete" not-null="true" />
+            </key>
+            <one-to-many class="chania.model.PaqueteDetalle" />
+        </set>
+    </class>
+</hibernate-mapping>

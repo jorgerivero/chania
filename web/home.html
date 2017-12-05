@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By Salon Chania - Copyright -->
+  <title>Banquetes Chania</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./jslib/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link rel="icon" href="img/salon/chania.ico" type="image/x-icon">
+  <script src="./jslib/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./jslib/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="./js/validaciones.js"></script>
+  <style>
+  body {
+      font: 400 15px/1.8 Lato, sans-serif;
+      color: #777;
+  }
+  h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+  }
+  .container {
+      padding: 80px 120px;
+  }
+  .person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 80%;
+      height: 80%;
+      opacity: 0.7;
+  }
+  .person:hover {
+      border-color: #f1f1f1;
+  }
+  .carousel-inner img {
+      -webkit-filter: grayscale(90%);
+      filter: grayscale(90%); /* make all photos black and white */ 
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+  }
+  .carousel-caption h3 {
+      color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+  .bg-1 {
+      background: #2d2d30;
+      color: #bdbdbd;
+  }
+  .bg-1 h3 {color: #fff;}
+  .bg-1 p {font-style: italic;}
+  .list-group-item:first-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+  }
+  .list-group-item:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail p {
+      margin-top: 15px;
+      color: #555;
+  }
+  .btn {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #f1f1f1;
+      border-radius: 0;
+      transition: .2s;
+  }
+  .btn:hover, .btn:focus {
+      border: 1px solid #333;
+      background-color: #fff;
+      color: #000;
+  }
+  .modal-header, h4, .close {
+      background-color: #333;
+      color: #fff !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-header, .modal-body {
+      padding: 40px 50px;
+  }
+  .nav-tabs li a {
+      color: #777;
+  }
+  #googleMap {
+      width: 100%;
+      height: 400px;
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+  }  
+  .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 4px;
+      opacity: 0.9;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #29292c !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+  .open .dropdown-toggle {
+      color: #fff;
+      background-color: #555 !important;
+  }
+  .dropdown-menu li a {
+      color: #000 !important;
+  }
+  .dropdown-menu li a:hover {
+      background-color: red !important;
+  }
+  footer {
+      background-color: #2d2d30;
+      color: #f5f5f5;
+      padding: 32px;
+  }
+  footer a {
+      color: #f5f5f5;
+  }
+  footer a:hover {
+      color: #777;
+      text-decoration: none;
+  }  
+  .form-control {
+      border-radius: 0;
+  }
+  textarea {
+      resize: none;
+  }
+  </style>
+</head>
+<body id="inicioPanel" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#myPage">
+	  <img src="img/salon/logo3.png" alt="Salon Chania" width="150" height="90">
+	  </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#inicioPanel">INICIO</a></li>
+        <li><a href="#nosotrosPanel">NOSOTROS</a></li>
+        <li><a href="#alimentosPanel">ALIMENTOS</a></li>
+        <li><a href="#contactoPanel">CONTACTO</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVICIOS
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#eventosPanel">Eventos Empresariales</a></li>
+			<li><a href="#djPanel">DJ, Batucada</a></li>
+			<li><a href="#audioPanel">Audio, Sonorizacion profesional</a></li>
+			<li><a href="#karaokePanel">Karaoke</a></li>
+			<li><a href="#ceremoniasPanel">Maestro de ceremonias</a></li>
+            <li><a href="#alimentosPanel">Alimentos</a></li>
+            <li><a href="#banquetesPanel">Banquetes</a></li>
+			<li><a href="#bebidasPanel">Barra de Bebidas</a></li>
+			<li><a href="#lozaPanel">Loza</a></li>
+			<li><a href="#meserosPanel">Meseros</a></li>
+          </ul>
+        </li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+	  <li data-target="#myCarousel" data-slide-to="3"</li>
+	  
+	  <li data-target="#myCarousel" data-slide-to="4"</li>
+	  <li data-target="#myCarousel" data-slide-to="5"</li>
+	  <li data-target="#myCarousel" data-slide-to="6"</li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="img/salon/AcerNos3.jpg" alt="Los Mejores Meseros " width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>Gran servicio</h3>
+          <p>Para nosotros el servicio es un estilo de vida </p>
+        </div>      
+      </div>
+
+      <div class="item">
+        <img src="img/salon/banquetes1.jpg" alt="Los Mejores Platillos" width="1200" height="700">
+        <div class="carousel-caption">
+          <h3>Menu</h3>
+          <p>Alimentos para tus diferentes eventos </p>
+        </div>      
+      </div>
+    
+      <div class="item">
+        <img src="img/salon/mejoresDJ.jpg" alt="La mejor Calidad para su Evento" width="1000" height="700">
+        <div class="carousel-caption">
+            <h3>Iluminacion y sonorizacion de alta calidad </h3>
+          <p>La  mejor musica y ambiente </p>
+        </div>    
+      </div>
+	  
+	  <div class="item">
+        <img src="img/salon/decoracion.jpg" alt="Decoración para cada uno de sus eventos" width="1000" height="700">
+        <div class="carousel-caption">
+          <h3>Decoración</h3>
+          <p></p>
+        </div>
+      </div>
+	  <div class="item">
+        <img src="img/salon/mesasysillas.jpg" alt="Renta de mesas,sillas y manteleria" width="1000" height="700">
+        <div class="carousel-caption">
+          <h3>Mesas redondas y rectangulares</h3>
+          <p>Mantelería acorde a su evento ¡Contáctenos!</p>
+        </div>
+      </div>
+	  <div class="item">
+        <img src="img/salon/chania_publi3.jpg" alt="Banquete especial" width="1000" height="700">
+        <div class="carousel-caption">
+          <h3>Banquete especial</h3>
+          <p>Nuestra experiencia hace de tu evento, un momento especial!</p>
+        </div>
+      </div>
+	  <div class="item">
+        <img src="img/salon/chania_publi4.jpg" alt="Banquete especial" width="1000" height="700">
+        <div class="carousel-caption">
+          <h3>Banquete especial</h3>
+          <p>Nuestra experiencia hace de tu evento, un momento especial!</p>
+        </div>
+      </div>
+	  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Regresar</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Siguiente</span>
+    </a>
+</div>
+
+<!-- Container (Nosotros Section) -->
+<div id="nosotrosPanel" class="container text-center">
+  <h3>Acerca de Nosotros</h3>
+  <p><em>Hacemos que tu evento seaun momento inolvidable!</em></p>
+  <p>El Sal&oacute;n de eventos CHANIA surgi&oacute; gracias a la demanda de nuestros clientes, dicho negocio fue perfeccionando el servicio de banquetes en un solo recinto, el lugar permite atender c&oacute;modamente a personas que asistan al evento propiamente dictaminado por nuestros anfitriones. Proveer un asiento, una mesa, manteler&iacute;a, utensilios para servir los alimentos, adem&aacute;s de una amplia organizaci&oacute;n de meseros perfectamente capacitados, adem&aacute;s un DJ ameniza con buena m &uacute;sica para todos los g&eacute;neros. Todo este servicio y experiencia hace de cualquier evento un momento inolvidable al lado de tus seres queridos o invitados.</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Boda</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="img/salon/empres1.jpg" class="img-circle person" alt="descripcion" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>xxxxx</p>
+        <p>xxxx</p>
+        <p>xxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>VX años</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="img/salon/empres2.jpg" class="img-circle person" alt="Descripcion" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>texto</p>
+        <p>Texto</p>
+        <p>Texto</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Cumpleaños</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="img/salon/empres3.jpg" class="img-circle person" alt="Nos dedicamos a planear eventos, creando momentos especiales que serán recordados por todos tus seres queridos, nos sentimos afortunados y apreciamos por cada boda que realizamos y ser parte de ese día tan importante." width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>Limpieza</p>
+        <p>Elegancia</p>
+        <p>Calidad</p>
+      </div>
+  </div>
+</div>
+
+<!-- Container (alimentos Section) -->
+<div id="alimentosPanel" class="bg-1">
+  <div class="container">
+    <h3 class="text-center">Nuestros Alimentos!</h3>
+    <p class="text-center">Gustos y sabores.<br> Que saciaran paladares exigentes!</p>
+    <ul class="list-group">
+      <li class="list-group-item">Gourmet <span class="label label-danger">Satisfaccion total empresarial!</span></li>
+      <li class="list-group-item">Buffete <span class="label label-danger">Gran variedad de comida mexicana e internacional!</span></li> 
+      <li class="list-group-item">Platillos <span class="badge">Ofreciendo alimentos de la mas alta calidad a 2,3 y 4 tiempos!</span></li> 
+    </ul>
+    
+    <div class="row text-center">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="img/salon/Food-Gallery2.jpg" alt="Gourmet" width="400" height="300">
+          <p><strong>Gourmet</strong></p>
+          <p>Perfecto en eventos empresariales y negocios!</p>
+          <button class="btn" data-toggle="modal" data-target="#myModal">Cotizacion a empresas</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="img/salon/Food-Gallery3.jpg" alt="Gourmet" width="400" height="300">
+          <p><strong>Buffete</strong></p>
+          <p>Satifaccion a paladares exigentes en comida mexicana tradicional e internacional!</p>
+          <button class="btn" data-toggle="modal" data-target="#myModal">Taquizas, quezadillas, carne al pastor, parrilladas!</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="img/salon/Food-Gallery4.jpg" alt="Platillos" width="400" height="300">
+          <p><strong>Satisfaccion a paladares familiares e infantiles!</strong></p>
+          <p>Carne azada, pechugas gordon blue, lomo de cerdo con guarniciones muy sabrosas!</p>
+          <button class="btn" data-toggle="modal" data-target="#myModal">Cremas, espaguetti y platillo fuerte!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">�</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
+              <input type="number" class="form-control" id="psw" placeholder="How many?">
+            </div>
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+              <button type="submit" class="btn btn-block">Pay 
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+          </button>
+          <p>Need <a href="#">help?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Eventos Empresatiales Panel Section) -->
+<div id="eventosPanel" class="container text-center">
+  <h3>Eventos Empresariales</h3>
+  <p><em>Ofrecemos el ambiente perfecto a tus clientes y negocios!!!</em></p>
+  <p>El Sal&oacute;n de eventos CHANIA .</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Evento fin de año</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="img/salon/empres1.jpg" class="img-circle person" alt="Fiesta de fin de año" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>xxxx</p>
+        <p>xxxxx</p>
+        <p>xxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Evento de Presentacion</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="img/salon/empres2.jpg" class="img-circle person" alt="Presentación " width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>xxxx</p>
+        <p>xxxx</p>
+        <p>xxxx8</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Evento social</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="img/salon/empres3.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>xxxx</p>
+        <p>xxxx</p>
+        <p>xxxx</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (DJ Panel Section) -->
+<div id="djPanel" class="container text-center">
+  <h3>DJ, Batucada</h3>
+  <p><em>Con la musica que ati te gusta!!!</em></p>
+  <p>El Sal&oacute;n de eventos CHANIA .</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Alex DJ</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>xxxxt</p>
+        <p>xxxx</p>
+        <p>xxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Georgy Mix</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>xxxx</p>
+        <p>xxxx</p>
+        <p>xxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>DJ Zamuray</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>xxxx</p>
+        <p>xxxx</p>
+        <p>xxxx</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Audio Panel Section) -->
+<div id="audioPanel" class="container text-center">
+  <h3>Audio y sonorizaciones profesionales</h3>
+  <p><em>Con el audio profesional a tu gusto y medida!!!</em></p>
+  <p>El Sal&oacute;n de eventos CHANIA .</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Alex DJ</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>xxxt</p>
+        <p>Lxxx</p>
+        <p>xxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Georgy Mix</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>xxxx</p>
+        <p>xxx</p>
+        <p>Mxxx8</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>DJ Zamuray</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>xxxx</p>
+        <p>xxxx</p>
+        <p>Mxxxx</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Karaoke Panel Section) -->
+<div id="karaokePanel" class="container text-center">
+  <h3>Karaoke</h3>
+  <p><em>Con la musica que ati te gusta cantar y concursar al estilo la voz Mexico!!!</em></p>
+  <p>El Sal&oacute;n de eventos CHANIA .</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Alex DJ</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>xxxxx</p>
+        <p>Lxxx</p>
+        <p>xxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Georgy Mix</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>xxxx</p>
+        <p>xxxx'</p>
+        <p>xxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>DJ Zamuray</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>xxxx</p>
+        <p>xxxx</p>
+        <p>xxxx</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (ceremonias Panel Section) -->
+<div id="ceremoniasPanel" class="container text-center">
+  <h3>Maestro de ceremonias</h3>
+  <p><em>Con los mejores locutores y ambientaci&oacute;n en vivo!!!</em></p>
+  <p>El Sal&oacute;n de eventos CHANIA .</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Alex DJ</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>xxxx</p>
+        <p>xxx</p>
+        <p>xxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Georgy Mix</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>xxxx</p>
+        <p>Lxxxx</p>
+        <p>xxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>DJ Zamuray</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>xxxx</p>
+        <p>xxxxx</p>
+        <p>xxxxx</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Banquetes Panel Section) -->
+<div id="banquetesPanel" class="container text-center">
+  <h3>Banquetes</h3>
+  <p><em>El equipo mas completo al servir a tus invitados sus alimentos!!!</em></p>
+  <p>El Sal&oacute;n de eventos CHANIA .</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Alex DJ</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>xxx</p>
+        <p>xxxx</p>
+        <p>xxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Georgy Mix</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>xxxxx</p>
+        <p>xxxxx</p>
+        <p>xxxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>DJ Zamuray</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>xxxx</p>
+        <p>xxxxx</p>
+        <p>Mxxxxx</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Bebidas Panel Section) -->
+<div id="bebidasPanel" class="container text-center">
+  <h3>Barra de bebidas</h3>
+  <p><em>Nuestro bar ofrece la mejor cocteleria a tus invitados!!!</em></p>
+  <p>El Sal&oacute;n de eventos CHANIA .</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Alex DJ</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>xxxxx</p>
+        <p>xxxxx</p>
+        <p>xxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Georgy Mix</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>xxxxx</p>
+        <p>xxxx</p>
+        <p>xxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>DJ Zamuray</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>xxxx</p>
+        <p>xxxx</p>
+        <p>xxxx</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Loza Panel Section) -->
+<div id="lozaPanel" class="container text-center">
+  <h3>Loza</h3>
+  <p><em>El equipo, instrumentos y decoraci&oacute;n para los comenzales mas exigentes!!!</em></p>
+  <p>El Sal&oacute;n de eventos CHANIA .</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Alex DJ</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>xxx</p>
+        <p>Lxxxh</p>
+        <p>xxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Georgy Mix</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>xxxxx</p>
+        <p>xxxxx</p>
+        <p>Mxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>DJ Zamuray</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>xxx</p>
+        <p>xxxx</p>
+        <p>xxxxx</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (meseros Panel Section) -->
+<div id="meserosPanel" class="container text-center">
+  <h3>Meseros</h3>
+  <p><em>Con el personal capacitado a la medida de tu evento!!!</em></p>
+  <p>El Sal&oacute;n de eventos CHANIA .</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Alex DJ</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>xxxxx</p>
+        <p>xxxxxx</p>
+        <p>Mxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Georgy Mix</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>xxxxx</p>
+        <p>xxxxx</p>
+        <p>xxxxx</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>DJ Zamuray</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="img/salon/dj-in-action.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>xxxxx</p>
+        <p>Lxxx</p>
+        <p>xxxxxx</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="contactoPanel" class="container">
+  <h3 class="text-center">Contacto</h3>
+  <p class="text-center"><em>Para mayores informes y presupuestos contactanos!</em></p>
+
+  <div class="row">
+    <div class="col-md-4">
+      <p>Permitenos ayudarte en!!!</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>Azaleas No59, Vista Hermosa, <br>Nicol&aacute;s Romero, Estado de M&eacute;xico.</p>
+      <p><span class="glyphicon glyphicon-phone"></span>Telefono: +52 55 16601685</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: jorgerr@gmail.com</p>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="nombre" name="nombre" placeholder="Nombre" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comentarios" name="comentarios" placeholder="Comentarios" rows="5"></textarea>
+      <br>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <!--button class="btn pull-right" type="submit">Enviar</button-->
+		  <button class="btn pull-right" type="button" onclick="grabarSolicitud();">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <h3 class="text-center">Bitacora de Visitas</h3>  
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Siguenos en redes sociales!!!</a></li>
+    <li><a data-toggle="tab" href="#menu1">Facebook @salonchania</a></li>
+    <li><a data-toggle="tab" href="#menu2">Twitter @salonchania</a></li>
+	<li><a data-toggle="tab" href="#menu3">Instagram @salonchania</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h2>Facebook</h2>
+      <p>Man, we've been on the road for some time now. Looking forward to lorem ipsum.</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h2>Twitter</h2>
+      <p>Always a pleasure people! Hope you enjoyed it as much as I did. Could I BE.. any more pleased?</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h2>Peter Griffin, Bass player</h2>
+      <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
+    </div>
+	<div id="menu3" class="tab-pane fade">
+      <h2>Instagram</h2>
+      <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
+    </div>
+	<div id="chaniamap" style="width:800px;height:400px">
+	<a target="_blank" href="https://www.google.com.mx/maps/place/Salon+de+Eventos+Sociales+Chania/@19.6305728,-99.3008849,15z/data=!4m2!3m1!1s0x0:0x6e240a625d2202f9?sa=X&ved=0ahUKEwjS6_rwjefXAhXmzlQKHfGsD9QQ_BIIiQEwDg">
+	<img src="img/salon/chaniamap.jpg" alt="Localizacion Salon Chania" width="100%" height="100%">
+	</a>
+	</div>
+  </div>
+</div>
+
+<!-- Add Google Maps -->
+<!--div id="googleMap"></div-->
+<script>
+//https://www.google.com.mx/maps/place/Salon+de+Eventos+Sociales+Chania/@19.6305728,-99.3008849,15z/data=!4m5!3m4!1s0x0:0x6e240a625d2202f9!8m2!3d19.6305728!4d-99.3008849
+/*
+function myMap() {
+var myCenter = new google.maps.LatLng(19.6305728, -99.3008849);
+var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var marker = new google.maps.Marker({position:myCenter});
+marker.setMap(map);
+}
+*/
+</script>
+<!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"-->
+<!--script src="https://maps.googleapis.com/maps/api/js?key=banqueteschania&callback=myMap"-->
+</script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+<!-- Footer -->
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <p>Cont&aacute;ctanos 
+	Azaleas 59, Vista Hermosa, Estado de M&eacute;xico
+	Villa Nicol&aacute;s Romero
+	<a href="http://localhost:8080/chania/home.html#" data-toggle="tooltip" title="Promociones y presupuestos especiales">Facebook @salonchania</a></p> 
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip(); 
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+</script>
+
+</body>
+</html>

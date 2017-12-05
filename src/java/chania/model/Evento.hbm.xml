@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/11/2017 11:31:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="chania.model.Evento" table="evento" catalog="chaniadb" optimistic-lock="version">
+        <composite-id name="id" class="chania.model.EventoId">
+            <key-property name="salonClaveRef" type="string">
+                <column name="salon_clave_ref" length="45" />
+            </key-property>
+            <key-property name="eventoFecha" type="string">
+                <column name="evento_fecha" length="45" />
+            </key-property>
+            <key-property name="eventoHora" type="string">
+                <column name="evento_hora" length="45" />
+            </key-property>
+            <key-property name="salonSalonClave" type="string">
+                <column name="salon_salon_clave" length="45" />
+            </key-property>
+            <key-property name="usuarioUsername" type="string">
+                <column name="usuario_username" length="45" />
+            </key-property>
+            <key-property name="clienteIdcliente" type="int">
+                <column name="cliente_idcliente" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="cliente" class="chania.model.Cliente" update="false" insert="false" fetch="select">
+            <column name="cliente_idcliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="salon" class="chania.model.Salon" update="false" insert="false" fetch="select">
+            <column name="salon_salon_clave" length="45" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="chania.model.Usuario" update="false" insert="false" fetch="select">
+            <column name="usuario_username" length="45" not-null="true" />
+        </many-to-one>
+        <property name="idevento" type="int">
+            <column name="idevento" not-null="true" />
+        </property>
+        <property name="eventoDuracion" type="string">
+            <column name="evento_duracion" length="45" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="80" />
+        </property>
+        <property name="fechaAlta" type="timestamp">
+            <column name="fecha_alta" length="19" />
+        </property>
+        <property name="facturaClaveRef" type="string">
+            <column name="factura_clave_ref" length="45" />
+        </property>
+        <property name="idclienteRef" type="java.lang.Integer">
+            <column name="idcliente_ref" />
+        </property>
+        <property name="usuarioUsernameRef" type="string">
+            <column name="usuario_username_ref" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
